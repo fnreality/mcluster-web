@@ -7,6 +7,8 @@ defmodule MclusterServer.Application do
 
   @impl true
   def start(_type, _args) do
+    # Start the Erlang Term Storage (ETS)
+    :ets.new :mcluster_cache, [:named_table]
     children = [
       # Starts a worker by calling: MclusterServer.Worker.start_link(arg)
       # {MclusterServer.Worker, arg}
